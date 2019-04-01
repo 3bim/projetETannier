@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+  <title>Projet 4bim INSA 2018 2019</title>
+</head>
+<body>
+<div style="text-align: center;"><big style="font-weight: bold;"><big><br>
+</big></big>
+<h1>Projet MIG INSA 4bim 2018 2019 : réarrangements dans le génome de la bactérie <i>Yersinia Pestis</i></h1>
+</div>
+<br>
+
+<h3> Aspects Pratiques</h3>
+
+Vous pouvez vous organiser par deux ou trois pour ce projet.
+Pour chaque groupe, rédigez un rapport de 10 pages maximum sur vos travaux et retournez-le
+avec vos programmes et leur mode d'emploi à Eric.Tannier@univ-lyon1.fr avant le 26 avril 2019.
+Même adresse pour toutes les questions jusqu'à cette date.
+Le langage de programmation est libre.
+
+
+
+<h3> Questions </h3>
+
+<h4> A/ Finir le TP commencé en cours </h4>
+
+1/ Pour une permutation donné, calculez le nombre d'adjacences, c'est à 
+dire le nombre de couples de lettres consécutives dans la permutations 
+et dans l'ordre alphabétique, plus un si la première ou la dernière 
+lettres sont placées correctement.
+
+<br>
+
+2/ Pour une permutation donné, générez toutes les permutations obtenues 
+avec une inversion et qui augmentent le nombre d'adjacences
+
+<br>
+
+3/ Écrivez et implémentez un algorithme qui donne le nombre minimum 
+d'inversions pour transformer une permutation de lettres en l'ordre 
+alphabétique. Pour cela, vous pouvez appliquer récursivement la fonction
+ précédente jusqu'à obtenir l'ordre alphabétique.
+
+<br>
+
+4/ En générant un échantillon de permutations aléatoires, corriger 
+l'estimation de Sturtevant, Novitski, 1941 sur la distance moyenne 
+d'inversions pour des chromosomes ayant 6, 7 ou 13 gènes. 
+
+<br>
+
+5/ Quelle est la probabilité (approximée avec la fréquence dans les 
+simulations) d'obtenir la mesure de similarité observée dans les données
+ si l'ordre des gènes n'est pas conservé? Que peut-on en conclure sur la
+ conservation de l'ordre des gènes chez les drosophiles?
+
+<h4> B/ Comparaisons de deux génomes bactériens complets </h4>
+
+Les nouvelles technologies de séquençage permettent de séquencer l'ADN ancien. Il y a quelques années, est parue <a href="http://www.lemonde.fr/planete/article/2011/10/13/au-c-ur-du-genome-de-la-peste-noire_1586542_3244.html">la première séquence d'un génome bactérien disparu, celui de l'organisme responsable de la peste noire du moyen-âge</a>.
+
+<br>
+
+Le but de ce projet est de comparer ce génome à un de ses descendants actuel, notamment en termes d'organisation du génome.
+
+<br>
+
+<h3> 1/ Téléchargez les deux séquences chromosomiques à comparer </h3>
+
+Vous pourrez trouver la séquence du chromosome du génome médiéval <a href="http://lbbe.univ-lyon1.fr/projets/tannier/INSA/MIG/1348_chromosome">ici</a>.
+
+<br>
+
+Trouvez la séquence du chromosome de la souche actuelle "Yersinia pestis CO92" sur le site du <a href="http://www.ncbi.nlm.nih.gov/">NCBI</a>
+
+<br>
+
+Comparez les tailles de génomes, comptez le nombre de sites non définis sur chacun des deux.
+
+<br>
+
+<h3> 2/ Alignez les chromosomes </h3>
+
+Sur le site du NCBI, avec <a href="http://blast.ncbi.nlm.nih.gov/Blast.cgi?PROGRAM=blastn&amp;BLAST_PROGRAMS=megaBlast&amp;PAGE_TYPE=BlastSearch&amp;SHOW_DEFAULTS=on&amp;LINK_LOC=blasthome">BLAST</a>,
+ alignez les deux séquence chromosomiques, option MEGABLAST parce que 
+les séquences sont assez similaires (650 ans de divergence).
+
+Vous pouvez utiliser le numéro d'accession pour le chromosome moderne.
+
+
+<br>
+
+Visualisez le "dotplot" de ces alignements (Dot Matrix View sur les résultats de Blast), et
+Téléchargez tous les alignements sous forme de tableau (Download-&gt;Table).
+
+<img src="Projet%204bim%20INSA%202018%202019_files/hit_matrix.png">
+
+<br>
+
+Faites attention à la direction relative des alignements, elle vous sera utile au cours du projet.
+
+
+<h3> 3/ Filtrer les orthologies </h3>
+
+Sur le dotplot, vous voyez des blocs orthologues (longues lignes 
+diagonales) et beaucoup de répétitions (points dispersés organisés en 
+grille).
+Concevez une méthode qui récupère les coordonnées des blocs orthologues,
+ c'est à dire filtrer les données pour éliminer les répétitions.
+
+<br>
+
+Comparer la visualisation des données filtrées avec les données brutes en refaisant le dotplot après filtrage. 
+
+<br>
+
+Comparez le taux de similarité entre les alignements gardés et les alignements filtrés. La dynamique
+de duplication dans le génome est-elle plus ancienne ou plus récente que le moyen-âge?
+
+<br>
+
+<h3> 4/ Réarrangements </h3>
+
+Combien d'inversions séparent la souche médiévale de la souche actuelle?
+ Utilisez les données filtrées et la formule d=n-c, où d et le nombre 
+d'inversions, n est le nombre de marqueurs orthologues, et c est le 
+nombre de cycles dans le graphe de comparaison.
+
+<br>
+
+Les inversions concernent-elles des segments aléatoires du génome? Pour 
+répondre à cette question, simulez des inversions aléatoires sur le même
+ nombre de marqueurs, et comparez d et c. Quelle est la probabilité 
+d'obtenir le rapport observé entre ces deux valeurs? Quel type de modèle
+ faudrait-il construire pour rendre compte de cette valeur observée?
+
+<br><br>
+
+
+
+
+
+</body></html>
