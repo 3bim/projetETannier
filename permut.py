@@ -1,5 +1,7 @@
 import random
 import string
+import time
+
 
 def nb_adjacences(permutation) :
 	a=0
@@ -34,6 +36,24 @@ def min_inv(perm, nb=0) :
 			return min(nb_min)
 		return(float("inf"))
 
+def min_inv2(perm, dic=dict()) :
+	if nb_adjacences(perm)==len(perm)+1 :
+		dic[perm]=0
+		return 0
+	else :
+		perm1=permut_1_inv(perm)
+		if perm1 :
+			nb_min=[]
+			for p in perm1 :
+				if p in dic :
+					nb_min.append(dic[p])
+				else :
+					nb_min.append(min_inv2(p, dic))
+			dic[perm]=min(nb_min)+1
+			return min(nb_min)+1
+		dic[perm]=float("inf")
+		return float("inf")
+
 def echantillon(n) :
 	ascii=string.ascii_uppercase[:n]
 	a=''
@@ -44,10 +64,28 @@ def echantillon(n) :
 	return a
 
 if __name__=="__main__" :
+	"""for i in range(6,14) :
+		print "test min_inv2 a %d" % i
+		start_time=time.time()
+		perm=echantillon(i)
+		print "min_inv2 : " +str(min_inv2(perm))
+		print "temps d'exe : %s sec" % (time.time()-start_time)
+		print"""
+	
+	
 	l=[]
-	for __ in range(10) :
-		for _ in range(100) :
-			r=min_inv(echantillon(7))
-			if r!=float('inf') :
-				l.append(r)
-		print float(sum(l))/float(len(l))
+	t=[]
+	b=0
+	print('iter\ttemps\ttps moy\tdist\td moy\tp-val')
+	for _ in range(20) :
+		start_time=time.time()
+		d=min_inv2(echantillon(13))
+		t.append(time.time()-start_time)
+		if d!=float('inf') :
+			l.append(d)
+			if d<=7 :
+				b+=1
+		print(str(_)+'\t'+str(t[_])+'\t'+str(sum(t)/len(t))+'\t'+str(d)+'\t'+str(sum(l)/float(len(l)))+'\t'+str(float(b)/float(len(l))))
+	print
+	print float(sum(l))/float(len(l))
+	print float(b)/float(len(l))
