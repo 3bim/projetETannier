@@ -64,6 +64,7 @@ def echantillon(n) :
 	return a
 
 if __name__=="__main__" :
+#test pour le temps d'exécution de la fonction de distance optimisée, permutations de longueur 6 à 13 (à 13 on a environ 6min)
 	"""for i in range(6,14) :
 		print "test min_inv2 a %d" % i
 		start_time=time.time()
@@ -76,6 +77,9 @@ if __name__=="__main__" :
 	l=[]
 	t=[]
 	b=0
+	
+	
+#calcul de la distance d'inversion pour 20 permutations de taille 13 ; affiche à chaque fois : le numéro d'itération, le temps de calcul de la i-ème itération, le temps moyen de calcul des i premières itérations, la distance de la i-ème permutation, la distance moyenne des i premières, la proportion de pemutation de distance <=7 parmi les i premières itérations
 	print('iter\ttemps\ttps moy\tdist\td moy\tp-val')
 	for _ in range(20) :
 		start_time=time.time()
@@ -87,5 +91,7 @@ if __name__=="__main__" :
 				b+=1
 		print(str(_)+'\t'+str(t[_])+'\t'+str(sum(t)/len(t))+'\t'+str(d)+'\t'+str(sum(l)/float(len(l)))+'\t'+str(float(b)/float(len(l))))
 	print
+#distance moyenne d'inversion
 	print float(sum(l))/float(len(l))
+#proportion de permutations de distance <=7 (pvalue du test)
 	print float(b)/float(len(l))
