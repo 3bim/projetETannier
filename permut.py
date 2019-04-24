@@ -74,12 +74,11 @@ if __name__=="__main__" :
 		print"""
 	
 	
+	
+#calcul de la distance d'inversion pour 20 permutations de taille 13 ; affiche à chaque fois : le numéro d'itération, le temps de calcul de la i-ème itération, le temps moyen de calcul des i premières itérations, la distance de la i-ème permutation, la distance moyenne des i premières, la proportion de pemutation de distance <=7 parmi les i premières itérations
 	l=[]
 	t=[]
 	b=0
-	
-	
-#calcul de la distance d'inversion pour 20 permutations de taille 13 ; affiche à chaque fois : le numéro d'itération, le temps de calcul de la i-ème itération, le temps moyen de calcul des i premières itérations, la distance de la i-ème permutation, la distance moyenne des i premières, la proportion de pemutation de distance <=7 parmi les i premières itérations
 	print('iter\ttemps\ttps moy\tdist\td moy\tp-val')
 	for _ in range(20) :
 		start_time=time.time()
